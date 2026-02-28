@@ -1,7 +1,15 @@
 import Link from "next/link";
 import { parseResumeMarkdown, tokenizeInlineText } from "@/lib/resume-markdown";
 
-function InlineText({ text }) {
+interface InlineTextProps {
+  text: string;
+}
+
+interface ResumeMarkdownProps {
+  markdown: string;
+}
+
+function InlineText({ text }: InlineTextProps) {
   const tokens = tokenizeInlineText(text);
 
   return tokens.map((token, index) => {
@@ -23,7 +31,7 @@ function InlineText({ text }) {
   });
 }
 
-export function ResumeMarkdown({ markdown }) {
+export function ResumeMarkdown({ markdown }: ResumeMarkdownProps) {
   const blocks = parseResumeMarkdown(markdown);
 
   return (

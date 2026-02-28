@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { featuredProjects } from "@/lib/project-data";
+import { featuredProjects, type FeaturedProject } from "@/lib/project-data";
 import { ProjectCard } from "@/components/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
@@ -12,7 +12,7 @@ export function ProjectsTabs() {
   }, []);
 
   const projectByCategory = useMemo(() => {
-    const map = new Map();
+    const map = new Map<string, FeaturedProject[]>();
     map.set("All", featuredProjects);
     categories.forEach((category) => {
       if (category === "All") return;
@@ -35,7 +35,7 @@ export function ProjectsTabs() {
       </TabsList>
 
       {categories.map((category) => {
-        const projects = projectByCategory.get(category) || [];
+        const projects = projectByCategory.get(category) ?? [];
         return (
           <TabsContent key={category} value={category}>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

@@ -10,9 +10,13 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card";
-import { formatDate } from "@/lib/project-data";
+import { formatDate, type FeaturedProject } from "@/lib/project-data";
 
-export function ProjectCard({ project }) {
+interface ProjectCardProps {
+  project: FeaturedProject;
+}
+
+export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Card className="h-full border-border/70">
       <CardHeader>

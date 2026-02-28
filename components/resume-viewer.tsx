@@ -14,7 +14,22 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export function ResumeViewer({ resumes }) {
+interface ResumeItem {
+  slug: string;
+  tabLabel: string;
+  title: string;
+  focus: string;
+  description: string;
+  markdownFile: string;
+  pdfHref: string;
+  markdown: string;
+}
+
+interface ResumeViewerProps {
+  resumes: ResumeItem[];
+}
+
+export function ResumeViewer({ resumes }: ResumeViewerProps) {
   if (!resumes.length) {
     return (
       <Card>
