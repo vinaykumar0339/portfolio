@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Download, FileCode2, Github, Linkedin } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -47,6 +48,8 @@ const profileLinks = [
   { href: "https://dev.to/vinaykumar0339", label: "DEV", Icon: FileCode2 }
 ];
 
+const profileImageUrl = "https://github.com/vinaykumar0339.png";
+
 export default function HomePage() {
   const spotlight = featuredProjects.slice(0, 3);
 
@@ -58,13 +61,27 @@ export default function HomePage() {
         <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <Card className="border-border/70 bg-card/80">
             <CardHeader>
-              <CardTitle className="text-3xl leading-tight sm:text-4xl">
-                Vinay Kumar Thippireddy
-              </CardTitle>
-              <CardDescription className="text-base">
-                Mobile engineer focused on high-performance iOS and React Native systems,
-                platform-level automation, and reusable architecture.
-              </CardDescription>
+              <div className="flex items-start gap-4">
+                <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-xl border bg-muted/30">
+                  <Image
+                    src={profileImageUrl}
+                    alt="Vinay Kumar Thippireddy"
+                    fill
+                    sizes="96px"
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+                <div className="space-y-1">
+                  <CardTitle className="text-3xl leading-tight sm:text-4xl">
+                    Vinay Kumar Thippireddy
+                  </CardTitle>
+                  <CardDescription className="text-base">
+                    Mobile engineer focused on high-performance iOS and React Native systems,
+                    platform-level automation, and reusable architecture.
+                  </CardDescription>
+                </div>
+              </div>
             </CardHeader>
             <CardContent className="space-y-6">
               <ul className="grid gap-2 text-sm text-muted-foreground">

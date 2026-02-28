@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FileCode2, Github, Linkedin, Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -28,6 +29,8 @@ const profileLinks = [
   { href: "https://dev.to/vinaykumar0339", label: "DEV", Icon: FileCode2 }
 ];
 
+const profileImageUrl = "https://github.com/vinaykumar0339.png";
+
 export function SiteHeader() {
   const pathname = usePathname();
 
@@ -35,8 +38,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b bg-background/92 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <span className="inline-flex size-8 items-center justify-center rounded-md bg-primary text-sm font-bold text-primary-foreground">
-            VK
+          <span className="relative inline-flex h-9 w-9 overflow-hidden rounded-md border border-border/60 bg-muted">
+            <Image
+              src={profileImageUrl}
+              alt="Vinay Kumar"
+              fill
+              sizes="36px"
+              className="object-cover"
+            />
           </span>
           <div className="leading-tight">
             <p className="text-sm font-semibold">Vinay Kumar</p>
