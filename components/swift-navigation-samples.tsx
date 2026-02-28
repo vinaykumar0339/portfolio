@@ -40,14 +40,14 @@ const stackExample = `import SwiftUI
 import SwiftUINavigation
 
 struct ContentView: View {
-  let Stack = createStackNavigator(AppRoutes.self)
+  private static let Stack = createStackNavigator(AppRoutes.self)
 
   var body: some View {
     NavigationContainer {
-      Stack.Navigator(initialRoute: .home) {
-        Stack.Screen(route: .home) { _, _ in HomeView() }
+      Self.Stack.Navigator(initialRoute: .home) {
+        Self.Stack.Screen(route: .home) { _, _ in HomeView() }
 
-        Stack.Screen(
+        Self.Stack.Screen(
           route: .details(id: ""),
           options: ScreenOptions(title: "Details")
         ) { _, route in
@@ -61,12 +61,12 @@ struct ContentView: View {
 }`;
 
 const tabAndSheetExample = `struct MainTabView: View {
-  let Tab = createTabNavigator(AppRoutes.self)
+  private static let Tab = createTabNavigator(AppRoutes.self)
 
   var body: some View {
-    Tab.Navigator(initialRoute: .home) {
-      Tab.Screen(route: .home) { _, _ in HomeView() }
-      Tab.Screen(route: .settings) { _, _ in SettingsView() }
+    Self.Tab.Navigator(initialRoute: .home) {
+      Self.Tab.Screen(route: .home) { _, _ in HomeView() }
+      Self.Tab.Screen(route: .settings) { _, _ in SettingsView() }
     }
   }
 }
@@ -94,7 +94,7 @@ export function SwiftNavigationSamples() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="multiple" defaultValue={["routes"]} className="w-full">
           <AccordionItem value="routes">
             <AccordionTrigger>1) Define Routes</AccordionTrigger>
             <AccordionContent>

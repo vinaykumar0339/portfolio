@@ -18,12 +18,12 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 
-const DEFAULT_EXPRESSION =
-  "let subtotal = price * quantity; let discounted = applyDiscount(subtotal, discountRate); discounted | formatCurrency";
+const DEFAULT_EXPRESSION = `let subtotal = price * quantity;
+let discounted = applyDiscount(subtotal, discountRate);
+discounted | formatCurrency;`;
 
 const DEFAULT_VARIABLES = `{
   "price": 120,
@@ -202,7 +202,11 @@ export function JexlangPlayground() {
 
         <div className="grid gap-2">
           <label className="text-sm font-medium">Expression</label>
-          <Input value={expression} onChange={(event) => setExpression(event.target.value)} />
+          <Textarea
+            className="min-h-24 font-mono text-sm"
+            value={expression}
+            onChange={(event) => setExpression(event.target.value)}
+          />
         </div>
 
         <div className="grid gap-2">
